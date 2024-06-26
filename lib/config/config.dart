@@ -1,0 +1,29 @@
+class config {
+  static const String base = "http://54.237.183.18/api/bapi/";
+  static const String users = "users.php";
+  static const String create_package = "create_package.php";
+  static const String addBrand = "add_brand.php";
+  static const String addModel = "add_model.php";
+  static const String addType = "add_type.php";
+  static const String addService = "add_service.php";
+  static const String brands = "brands.php";
+  static const String deleteBrand = "delete_brand.php";
+  static const String types = "types.php";
+  static const String deletetype = "delete_type.php";
+  static const String models = "models.php";
+  static const String deleteModel = "delete_model.php";
+  static const String services = "services.php";
+  static const String deleteService = "delete_service.php";
+  static const String saveCarImage = "save_car_image.php";
+  static const String getCarIage = "get_car_image.php";
+  static const String colors = "colors.php";
+  static const String addColor = "add_color.php";
+  static const String deleteColor = "delete_color.php";
+  static const String delete_car_image = 'delete_car_image.php';
+  static const String get_Purchase = "admin_get_purchase.php";
+  static const String schedule = "schedule.php";
+  static const String staffsAdd = "add_staff.php";
+  static const String staffs = "get_staffs.php";
+  static const String completed = "all_completed.php";
+  static const String upcomings = "all_upcoming.php";
+}

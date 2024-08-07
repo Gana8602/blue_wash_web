@@ -9,6 +9,7 @@ class StaffService {
     var response = await http.get(Uri.parse("${config.base}${config.staffs}"));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
+      print(data);
       List<dynamic> list = data['data'];
       List<StaffModel> Staff = list.map((e) => StaffModel.fromJson(e)).toList();
       return Staff;

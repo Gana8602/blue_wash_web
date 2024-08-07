@@ -4,14 +4,17 @@ class StaffModel {
   String uName;
   String phone;
   String token;
+  String email;
+  String image;
 
-  StaffModel({
-    required this.id,
-    required this.name,
-    required this.uName,
-    required this.phone,
-    required this.token,
-  });
+  StaffModel(
+      {required this.id,
+      required this.name,
+      required this.uName,
+      required this.phone,
+      required this.token,
+      required this.email,
+      required this.image});
 
   factory StaffModel.fromJson(Map<String, dynamic> json) {
     return StaffModel(
@@ -19,6 +22,8 @@ class StaffModel {
         name: json['name'],
         uName: json['username'],
         phone: json['phone_number'],
-        token: json['token']);
+        token: json['token'],
+        email: json['email'],
+        image: json['image']);
   }
 }

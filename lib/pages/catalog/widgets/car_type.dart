@@ -4,6 +4,8 @@ import 'package:blue_wash_web/config/config.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../utls/colors.dart';
+
 class CarType extends StatefulWidget {
   const CarType({super.key});
 
@@ -72,8 +74,15 @@ class _CarTypeState extends State<CarType> {
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8),
+        color: Ac.bNcolor,
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white10.withOpacity(0.5),
+            blurRadius: 7,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,50 +92,104 @@ class _CarTypeState extends State<CarType> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Row(
             children: [
               Expanded(
                 child: TextField(
                   controller: _controller,
-                  decoration: InputDecoration(labelText: 'Enter Type'),
+                  decoration: InputDecoration(
+                    labelText: 'Enter Type',
+                    labelStyle: const TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                 ),
               ),
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: Add,
+              SizedBox(
+                width: 15,
+              ),
+              Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  gradient: Ac.bbg,
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.add, color: Colors.white),
+                  onPressed: Add,
+                ),
               ),
             ],
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: DataTable(
-                columns: const [
-                  DataColumn(label: Text('ID')),
-                  DataColumn(label: Text('Name')),
-                  DataColumn(label: Text("Action"))
-                ],
-                rows: _items
-                    .map(
-                      (item) => DataRow(
-                        cells: [
-                          DataCell(Text("${count++}")),
-                          DataCell(Text(item['name']!)),
-                          DataCell(IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
-                            onPressed: () {
-                              delete(item['name']!);
-                            },
-                          ))
-                        ],
-                      ),
-                    )
-                    .toList(),
-              ),
+              child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                return Container(
+                  width: constraints.maxWidth * 2.3,
+                  child: DataTable(
+                    columns: const [
+                      DataColumn(
+                          label: Text(
+                        'ID',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                      DataColumn(
+                          label: Text(
+                        'Name',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                      DataColumn(
+                          label: Text(
+                        "Action",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ))
+                    ],
+                    rows: _items
+                        .map(
+                          (item) => DataRow(
+                            cells: [
+                              DataCell(Text(
+                                "${count++}",
+                                style: const TextStyle(color: Colors.white),
+                              )),
+                              DataCell(Text(
+                                item['name']!,
+                                style: const TextStyle(color: Colors.white),
+                              )),
+                              DataCell(IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  delete(item['name']!);
+                                },
+                              ))
+                            ],
+                          ),
+                        )
+                        .toList(),
+                  ),
+                );
+              }),
             ),
           ),
         ],

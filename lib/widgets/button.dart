@@ -16,7 +16,7 @@ class ButtonBlue2 extends StatelessWidget {
         // color: Colors.amber,
         child: Center(
           child: Container(
-            // height: 50,
+            height: 50,
             // width: 300,
             decoration: BoxDecoration(
                 gradient: Ac.bbg,

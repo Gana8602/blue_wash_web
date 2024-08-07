@@ -1,3 +1,5 @@
+import 'package:blue_wash_web/pages/Add_package/Packages.dart';
+import 'package:blue_wash_web/pages/ProfilePage/profile.dart';
 import 'package:blue_wash_web/pages/catalog/catalog.dart';
 import 'package:blue_wash_web/pages/catalog/widgets/carImages.dart';
 import 'package:blue_wash_web/pages/home/home.dart';
@@ -6,8 +8,10 @@ import 'package:blue_wash_web/pages/staffs/staffsPage.dart';
 import 'package:blue_wash_web/pages/staffs/staffs_add.dart';
 import 'package:blue_wash_web/pages/tasks/TaskPage.dart';
 import 'package:blue_wash_web/pages/users/users.dart';
+import 'package:blue_wash_web/pages/vehicles/vehicles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'users/Add_package/add_package.dart';
+import 'Add_package/add_package.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -20,25 +24,27 @@ class _MainPageState extends State<MainPage> {
   int currentPage = 0;
   bool isExpand = false;
   List<IconData> icon = [
-    Icons.home,
+    CupertinoIcons.chart_bar_alt_fill,
     Icons.supervised_user_circle_sharp,
-    Icons.car_repair,
-    Icons.mail,
-    Icons.bookmarks_rounded,
-    Icons.image,
+    CupertinoIcons.cart_fill,
+    CupertinoIcons.car_detailed,
+    CupertinoIcons.collections_solid,
+    CupertinoIcons.circle_grid_3x3_fill,
     Icons.person_add_sharp,
     Icons.task
   ];
   List<String> names = [
     "Home",
     "Users",
+    "cars",
     "Vehicles",
     "Mail",
     "Catalog",
-    "Car Image",
     "Staffs",
-    "Tasks"
+    "Tasks",
   ];
+
+  int person = 7;
   @override
   Widget build(BuildContext context) {
     double sheight = MediaQuery.of(context).size.height;
@@ -76,13 +82,20 @@ class _MainPageState extends State<MainPage> {
                                         : Colors.grey,
                                   )),
                               isExpand
-                                  ? Text(
-                                      names[index],
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: currentPage == index
-                                              ? Colors.white
-                                              : Colors.grey),
+                                  ? InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          currentPage = index;
+                                        });
+                                      },
+                                      child: Text(
+                                        names[index],
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: currentPage == index
+                                                ? Colors.white
+                                                : Colors.grey),
+                                      ),
                                     )
                                   : const SizedBox(
                                       width: 1,
@@ -94,33 +107,45 @@ class _MainPageState extends State<MainPage> {
                       }),
                 ),
                 const Spacer(),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: const BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: const Icon(
-                          Icons.person,
-                          size: 20,
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      currentPage = person + 1;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: const BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
+                          child: Icon(
+                            Icons.person,
+                            size: 20,
+                            color: currentPage == 8 ? Colors.white : null,
+                          ),
                         ),
                       ),
-                    ),
-                    isExpand
-                        ? const Text(
-                            "Account",
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
-                          )
-                        : const SizedBox(
-                            height: 1,
-                            width: 1,
-                          )
-                  ],
+                      isExpand
+                          ? Text(
+                              "Account",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: currentPage == 8
+                                      ? Colors.white
+                                      : Colors.grey),
+                            )
+                          : const SizedBox(
+                              height: 1,
+                              width: 1,
+                            )
+                    ],
+                  ),
                 ),
                 IconButton(
                     onPressed: () {
@@ -159,15 +184,17 @@ class PageChanger extends StatelessWidget {
     } else if (page == 2) {
       return const PurchasedPage();
     } else if (page == 3) {
-      return const PackageAdd();
+      return const VehiclesPage();
     } else if (page == 4) {
-      return const Catalog();
+      return const PackagesPage();
     } else if (page == 5) {
-      return const CarImagePage();
+      return const Catalog();
     } else if (page == 6) {
       return const StaffsPage();
     } else if (page == 7) {
       return const TaskPage();
+    } else if (page == 8) {
+      return const Profilepgae();
     } else {
       return const Con1();
     }

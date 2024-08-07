@@ -1,5 +1,5 @@
 class config {
-  static const String base = "http://54.237.183.18/api/bapi/";
+  static const String base = "https://bluewash.in/api/";
   static const String users = "users.php";
   static const String create_package = "create_package.php";
   static const String addBrand = "add_brand.php";
@@ -26,4 +26,12 @@ class config {
   static const String staffs = "get_staffs.php";
   static const String completed = "all_completed.php";
   static const String upcomings = "all_upcoming.php";
+  static const String packages = "get_packages.php";
+  static const String deltPack = "delete_pack.php";
+  static const String editStaff = "edit_staff.php";
+  static const String deleteStaff = "delete_staff.php";
+  static const String cars = "vehicles.php";
+  static const String donwloadInvoice = "downlaod_invoice.php";
+  static const String login = "admin_login.php";
+  static const String reg = "admin_reg.php";
 }

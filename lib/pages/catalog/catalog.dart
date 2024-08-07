@@ -25,13 +25,14 @@ class _CatalogState extends State<Catalog> {
             Expanded(
                 child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
+                  crossAxisCount: 3, crossAxisSpacing: 30, mainAxisSpacing: 30),
               children: const [
                 Brand(),
                 Model(),
                 CarType(),
                 Services(),
-                ColorAdd()
+                ColorAdd(),
+                CarImagePage()
               ],
             )),
           ],

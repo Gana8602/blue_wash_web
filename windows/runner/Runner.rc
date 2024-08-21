@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "Blue Wash Admin" "\0"
+            VALUE "FileDescription", "Bluewash" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "Blue Wash Admin" "\0"
+            VALUE "InternalName", "Bluewash" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "Blue Wash Admin.exe" "\0"
-            VALUE "ProductName", "Blue Wash Admin" "\0"
+            VALUE "OriginalFilename", "Bluewash.exe" "\0"
+            VALUE "ProductName", "Bluewash" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

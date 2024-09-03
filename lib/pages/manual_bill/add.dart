@@ -224,29 +224,58 @@ class _PurchaseAddPageState extends State<PurchaseAddPage> {
               ButtonBlue2(
                 text: "Submit",
                 ontap: () async {
+                  int ID = 0;
                   // Handle the submit action here
                   print('Selected Package: $pName');
-
-                  String id = _invo.Invoices.first.id;
-                  int ID = int.parse(id) + 1;
-                  print(ID);
-                  final invoice = Invoice(
-                    invoiceNumber: "BW00$ID",
-                    customerName: _name.text,
-                    date: DateTime.now(),
-                    Cnumber: _phone.text,
-                    customerAddress: _address.text,
-                    items: [
-                      InvoiceItem(
-                          description: pName!,
-                          quantity: 1,
-                          price: double.parse(price!)),
-                    ],
-                  );
-                  int? invoiceId = await SendPdf(invoice);
-                  print(invoiceId);
-                  if (invoiceId != null) {
-                    SavePayment(invoiceId);
+                  if (_invo.Invoices.isEmpty) {
+                    print("yes");
+                    setState(() {
+                      ID = 1;
+                    });
+                    print(ID);
+                    final invoice = Invoice(
+                      invoiceNumber: "BW00$ID",
+                      customerName: _name.text,
+                      date: DateTime.now(),
+                      Cnumber: _phone.text,
+                      customerAddress: _address.text,
+                      items: [
+                        InvoiceItem(
+                            description: pName!,
+                            quantity: 1,
+                            price: double.parse(price!)),
+                      ],
+                    );
+                    int? invoiceId = await SendPdf(invoice);
+                    print(invoiceId);
+                    if (invoiceId != null) {
+                      SavePayment(invoiceId);
+                    }
+                  } else {
+                    String id = _invo.Invoices.first.id;
+                    print("NO");
+                    setState(() {
+                      ID = int.parse(id) + 1;
+                    });
+                    print(ID);
+                    final invoice = Invoice(
+                      invoiceNumber: "BW00$ID",
+                      customerName: _name.text,
+                      date: DateTime.now(),
+                      Cnumber: _phone.text,
+                      customerAddress: _address.text,
+                      items: [
+                        InvoiceItem(
+                            description: pName!,
+                            quantity: 1,
+                            price: double.parse(price!)),
+                      ],
+                    );
+                    int? invoiceId = await SendPdf(invoice);
+                    print(invoiceId);
+                    if (invoiceId != null) {
+                      SavePayment(invoiceId);
+                    }
                   }
                 },
               ),
@@ -264,7 +293,7 @@ class _PurchaseAddPageState extends State<PurchaseAddPage> {
       "phone": _phone.text,
       "email": _email.text,
       "package_name": pName,
-      "car_number": _car_number.text,
+      "car_number": _car_number.text.toUpperCase(),
       "price": price,
       "address": _address.text,
       "car_type": carType,

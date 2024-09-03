@@ -3,6 +3,7 @@ import 'package:blue_wash_web/pages/ProfilePage/profile.dart';
 import 'package:blue_wash_web/pages/catalog/catalog.dart';
 import 'package:blue_wash_web/pages/catalog/widgets/carImages.dart';
 import 'package:blue_wash_web/pages/home/home.dart';
+import 'package:blue_wash_web/pages/manual_bill/Addoder.dart';
 import 'package:blue_wash_web/pages/purchased/purchased.dart';
 import 'package:blue_wash_web/pages/staffs/staffsPage.dart';
 import 'package:blue_wash_web/pages/staffs/staffs_add.dart';
@@ -31,20 +32,22 @@ class _MainPageState extends State<MainPage> {
     CupertinoIcons.collections_solid,
     CupertinoIcons.circle_grid_3x3_fill,
     Icons.person_add_sharp,
-    Icons.task
+    Icons.task,
+    Icons.create_sharp
   ];
   List<String> names = [
     "Home",
     "Users",
-    "cars",
+    "Purchased",
     "Vehicles",
-    "Mail",
+    "Packages",
     "Catalog",
     "Staffs",
     "Tasks",
+    "Create Order"
   ];
 
-  int person = 7;
+  int person = 8;
   @override
   Widget build(BuildContext context) {
     double sheight = MediaQuery.of(context).size.height;
@@ -127,7 +130,7 @@ class _MainPageState extends State<MainPage> {
                           child: Icon(
                             Icons.person,
                             size: 20,
-                            color: currentPage == 8 ? Colors.white : null,
+                            color: currentPage == 9 ? Colors.white : null,
                           ),
                         ),
                       ),
@@ -136,7 +139,7 @@ class _MainPageState extends State<MainPage> {
                               "Account",
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: currentPage == 8
+                                  color: currentPage == 9
                                       ? Colors.white
                                       : Colors.grey),
                             )
@@ -193,8 +196,10 @@ class PageChanger extends StatelessWidget {
       return const StaffsPage();
     } else if (page == 7) {
       return const TaskPage();
-    } else if (page == 8) {
+    } else if (page == 9) {
       return const Profilepgae();
+    } else if (page == 8) {
+      return const OrderPageManual();
     } else {
       return const Con1();
     }

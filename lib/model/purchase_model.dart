@@ -45,3 +45,47 @@ class PurchaseModel {
         date: json['created_at'] ?? "");
   }
 }
+
+class PurchaseModel2 {
+  String id;
+  String name;
+  String phone;
+  String email;
+  String package_name;
+  String address;
+  String carNumber;
+  String carType;
+  String price;
+  String image;
+  String InvoiceId;
+
+  PurchaseModel2({
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.email,
+    required this.address,
+    required this.package_name,
+    required this.carNumber,
+    required this.carType,
+    required this.price,
+    required this.image,
+    required this.InvoiceId,
+  });
+
+  factory PurchaseModel2.fromJson(Map<String, dynamic> json) {
+    return PurchaseModel2(
+      id: json['id'],
+      name: json['name'],
+      phone: json['phone'],
+      email: json['email'],
+      address: json['address'],
+      carType: json['car_type'],
+      carNumber: json['car_number'],
+      package_name: json['package_name'],
+      price: json['price'],
+      image: json['image'] ?? "",
+      InvoiceId: json['invoice_id'] ?? "",
+    );
+  }
+}

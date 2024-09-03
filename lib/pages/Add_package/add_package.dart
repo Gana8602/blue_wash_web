@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:blue_wash_web/config/config.dart';
 import 'package:blue_wash_web/controller/package_controller.dart';
@@ -6,8 +8,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
@@ -25,7 +27,7 @@ class _PackageAddState extends State<PackageAdd> {
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _realPriceController = TextEditingController();
   String? _selectedCarType;
-  PackageController _pack = Get.put(PackageController());
+  final PackageController _pack = Get.put(PackageController());
   File? _image;
   final List<ValueItem> _services = [];
   final List<String> _carTypes = [];
@@ -63,7 +65,6 @@ class _PackageAddState extends State<PackageAdd> {
         for (var item in data['data']) {
           _services.add(ValueItem(label: item['name'], value: item['id']));
         }
-        print(_services);
         isLoading = false;
       });
     }
@@ -107,7 +108,6 @@ class _PackageAddState extends State<PackageAdd> {
 
       try {
         final response = await request.send();
-        final responseBody = await response.stream.bytesToString();
 
         if (response.statusCode == 200) {
           _pack.packages.clear();
@@ -133,13 +133,13 @@ class _PackageAddState extends State<PackageAdd> {
       child: Container(
         width: 800,
         height: 600,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
           color: Colors.black,
         ),
         padding: const EdgeInsets.all(16.0),
         child: isLoading
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(color: Colors.white),
               )
             : Form(
@@ -170,7 +170,8 @@ class _PackageAddState extends State<PackageAdd> {
                                   return DropdownMenuItem<String>(
                                     value: carType,
                                     child: Text(carType,
-                                        style: TextStyle(color: Colors.white)),
+                                        style: const TextStyle(
+                                            color: Colors.white)),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -180,13 +181,14 @@ class _PackageAddState extends State<PackageAdd> {
                                 },
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
+                                    borderSide:
+                                        const BorderSide(color: Colors.white),
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
                                 ),
                                 dropdownColor: Colors.black,
                                 iconEnabledColor: Colors.white,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                               const SizedBox(height: 25),
                               TextFormField(
@@ -194,23 +196,23 @@ class _PackageAddState extends State<PackageAdd> {
                                 decoration: InputDecoration(
                                     labelText: 'Package Name',
                                     labelStyle:
-                                        TextStyle(color: Colors.white54),
+                                        const TextStyle(color: Colors.white54),
                                     border: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     )),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter package name';
@@ -220,8 +222,8 @@ class _PackageAddState extends State<PackageAdd> {
                               ),
                               const SizedBox(height: 25),
                               MultiSelectDropDown(
-                                clearIcon:
-                                    Icon(Icons.close, color: Colors.white),
+                                clearIcon: const Icon(Icons.close,
+                                    color: Colors.white),
                                 controller: _controller,
                                 onOptionSelected: (options) {
                                   setState(() {
@@ -232,7 +234,7 @@ class _PackageAddState extends State<PackageAdd> {
                                   });
                                 },
                                 options: _services,
-                                suffixIcon: Icon(
+                                suffixIcon: const Icon(
                                   Icons.arrow_drop_down,
                                   color: Colors.white54,
                                 ),
@@ -260,24 +262,24 @@ class _PackageAddState extends State<PackageAdd> {
                                 decoration: InputDecoration(
                                     labelText: 'Price',
                                     labelStyle:
-                                        TextStyle(color: Colors.white54),
+                                        const TextStyle(color: Colors.white54),
                                     border: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     )),
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter price';
@@ -291,24 +293,24 @@ class _PackageAddState extends State<PackageAdd> {
                                 decoration: InputDecoration(
                                     labelText: 'Real Price',
                                     labelStyle:
-                                        TextStyle(color: Colors.white54),
+                                        const TextStyle(color: Colors.white54),
                                     border: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.white54),
+                                      borderSide: const BorderSide(
+                                          color: Colors.white54),
                                       borderRadius: BorderRadius.circular(10.0),
                                     )),
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter real price';
@@ -327,14 +329,14 @@ class _PackageAddState extends State<PackageAdd> {
                             child: DottedBorder(
                               color: Colors.grey,
                               strokeWidth: 2,
-                              dashPattern: [4, 4],
+                              dashPattern: const [4, 4],
                               borderType: BorderType.RRect,
-                              radius: Radius.circular(12),
+                              radius: const Radius.circular(12),
                               child: Container(
                                 height:
                                     MediaQuery.of(context).size.height / 2.3,
                                 width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [

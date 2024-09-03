@@ -14,3 +14,16 @@ class PurchaseController extends GetxController {
     }
   }
 }
+
+class PurchaseController2 extends GetxController {
+  var Purchased2 = <PurchaseModel2>[].obs;
+
+  Future<void> fetchpurchase() async {
+    var response = await PurchaseServce2().fetchPurchased();
+    if (response != null && response is List<PurchaseModel2>) {
+      Purchased2.assignAll(response.reversed);
+    } else {
+      Purchased2.assignAll([]);
+    }
+  }
+}

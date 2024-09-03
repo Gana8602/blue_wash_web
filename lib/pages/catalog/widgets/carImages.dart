@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, depend_on_referenced_packages, non_constant_identifier_names
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:blue_wash_web/widgets/button.dart';
@@ -23,7 +25,7 @@ class Brands {
 }
 
 class CarImagePage extends StatefulWidget {
-  const CarImagePage({Key? key}) : super(key: key);
+  const CarImagePage({super.key});
 
   @override
   State<CarImagePage> createState() => _CarImagePageState();
@@ -31,13 +33,12 @@ class CarImagePage extends StatefulWidget {
 
 class _CarImagePageState extends State<CarImagePage> {
   final List<Map<String, dynamic>> _items = [];
-  final TextEditingController _controller = TextEditingController();
 
   String? _selectedBrand;
   String? _selectedModel;
   String? _selectedColor;
-  List<Brands> _collections = [];
-  List<String> _models = [];
+  final List<Brands> _collections = [];
+  final List<String> _models = [];
   List<String> _brands = [];
   File? _image;
   List<String> Colorss = [];
@@ -65,7 +66,7 @@ class _CarImagePageState extends State<CarImagePage> {
         if (response.statusCode == 200) {
           var responseData = await response.stream.bytesToString();
           var jsonData = jsonDecode(responseData);
-          print(jsonData); // Print server response for debugging
+          // Print server response for debugging
           if (jsonData['status'] == 'success') {
             setState(() {
               _image = null; // Clear the selected image

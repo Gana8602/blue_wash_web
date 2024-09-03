@@ -13,3 +13,15 @@ class PackageController extends GetxController {
     }
   }
 }
+
+// class PackageController2 extends GetxController {
+//   var packages2 = <Packages2>[].obs;
+//   Future<void> fetchPackages() async {
+//     var response = await PackageService().getPackages();
+//     if (response != null && response is List<Packages2>) {
+//       packages2.assignAll(response);
+//     } else {
+//       packages2.assignAll([]);
+//     }
+//   }
+// }

@@ -21,12 +21,14 @@ class config {
   static const String deleteColor = "delete_color.php";
   static const String delete_car_image = 'delete_car_image.php';
   static const String get_Purchase = "admin_get_purchase.php";
+  static const String get_Purchase2 = "get_manual.php";
   static const String schedule = "schedule.php";
   static const String staffsAdd = "add_staff.php";
   static const String staffs = "get_staffs.php";
   static const String completed = "all_completed.php";
   static const String upcomings = "all_upcoming.php";
   static const String packages = "get_packages.php";
+  static const String packages2 = "get_packages2.php";
   static const String deltPack = "delete_pack.php";
   static const String editStaff = "edit_staff.php";
   static const String deleteStaff = "delete_staff.php";
@@ -34,4 +36,7 @@ class config {
   static const String donwloadInvoice = "downlaod_invoice.php";
   static const String login = "admin_login.php";
   static const String reg = "admin_reg.php";
+  static const String purchase2 = "purchase2.php";
+  static const String savePdf = "save_invoice.php";
+  static const String invoices = "invoices.php";
 }
